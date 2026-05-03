@@ -1,4 +1,9 @@
 def summarize_text(text):
+    import nltk
+
+    # Download required data for cloud
+    nltk.download('punkt', quiet=True)
+
     from sumy.parsers.plaintext import PlaintextParser
     from sumy.nlp.tokenizers import Tokenizer
     from sumy.summarizers.lsa import LsaSummarizer
@@ -8,8 +13,4 @@ def summarize_text(text):
 
     summary = summarizer(parser.document, 3)
 
-    final_summary = ""
-    for sentence in summary:
-        final_summary += str(sentence) + " "
-
-    return final_summary
+    return " ".join(str(sentence) for sentence in summary)
