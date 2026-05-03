@@ -1,16 +1,12 @@
 def summarize_text(text):
     import nltk
-
-    # Download required data for cloud
     nltk.download('punkt', quiet=True)
 
-    from sumy.parsers.plaintext import PlaintextParser
-    from sumy.nlp.tokenizers import Tokenizer
-    from sumy.summarizers.lsa import LsaSummarizer
+    from nltk.tokenize import sent_tokenize
 
-    parser = PlaintextParser.from_string(text, Tokenizer("english"))
-    summarizer = LsaSummarizer()
+    sentences = sent_tokenize(text)
 
-    summary = summarizer(parser.document, 3)
+    # Take first 5 sentences as summary
+    summary = " ".join(sentences[:5])
 
-    return " ".join(str(sentence) for sentence in summary)
+    return summary
