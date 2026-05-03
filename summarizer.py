@@ -1,12 +1,11 @@
 def summarize_text(text):
-    import nltk
-    nltk.download('punkt', quiet=True)
+    # Simple sentence splitting (no NLTK)
+    sentences = text.replace('\n', ' ').split('.')
 
-    from nltk.tokenize import sent_tokenize
+    # Clean sentences
+    sentences = [s.strip() for s in sentences if s.strip()]
 
-    sentences = sent_tokenize(text)
+    # Take first 5 sentences
+    summary = ". ".join(sentences[:5])
 
-    # Take first 5 sentences as summary
-    summary = " ".join(sentences[:5])
-
-    return summary
+    return summary + "."
