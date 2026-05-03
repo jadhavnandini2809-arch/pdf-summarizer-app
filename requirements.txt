@@ -1,0 +1,5 @@
+streamlit
+pdfplumber
+sumy
+nltk
+PyPDF2
